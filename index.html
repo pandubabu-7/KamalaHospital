@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamala Hospital - Quality Healthcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #198754;
+            --accent-color: #17a2b8;
+            --dark-color: #212529;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(13, 110, 253, 0.7) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #dcdcdc !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), rgba(0, 86, 179, 0.4)), 
+                        url('image.jpg') no-repeat center top;
+            background-size: cover;
+            background-position: center top;
+            color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 100px 20px 40px 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-top: 200px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0 25px;
+        }
+        .hero .btn-primary {
+            background-color: var(--secondary-color);
+            border: none;
+            font-size: 1.1rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+        }
+        .hero .btn-outline-light {
+            border-radius: 50px;
+            border: 2px solid #fff;
+            font-size: 1.1rem;
+        }
+
+        /* Section Headings */
+        section h2 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* About Section */
+        #about p {
+            line-height: 1.8;
+        }
+
+        /* Service Cards */
+        .service-card {
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        .service-card h5 {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Doctors Section */
+        #doctors .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        #doctors img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        #testimonials .carousel-item {
+            padding: 40px;
+        }
+        #testimonials p {
+            font-size: 1.2rem;
+        }
+
+        /* News Cards */
+        #news .card {
+            border: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        #news .card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Contact */
+        #contact .form-control {
+            border-radius: 10px;
+        }
+        #contact button {
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        #contact button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 25px 0;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 22px;
+            line-height: 48px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kamala Hospital</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Kamala Hospital</h1>
+            <p>Delivering quality healthcare with compassion, innovation, and trust.</p>
+            <a href="#contact" class="btn btn-primary me-3">Book Appointment</a>
+            <a href="#services" class="btn btn-outline-light">Our Services</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h2>About Us</h2>
+                    <p>Kamala Hospital has been providing advanced medical care for over five decades. With a patient-first philosophy, our team of doctors, nurses, and specialists are committed to offering world-class healthcare in a comforting environment.</p>
+                    <p>We combine modern technology with compassionate care to ensure every patient receives personalized treatment and the best medical attention.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/500x350?text=Hospital+Building" class="img-fluid rounded shadow" alt="Hospital">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-5">
+        <div class="container text-center">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card p-4">
+                        <h5>Emergency Care</h5>
+                        <p>24/7 emergency response with state-of-the-art facilities for urgent medical needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card p-4">
+                        <h5>Surgical Services</h5>
+                        <p>Advanced surgical procedures conducted by skilled surgeons using latest technology.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card p-4">
+                        <h5>Maternity & Child Care</h5>
+                        <p>Comprehensive care for mothers and infants, ensuring safe and joyful deliveries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Our Doctors</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x220?text=Dr.+Smith" alt="Doctor">
+                        <div class="card-body">
+                            <h5>Dr. John Smith</h5>
+                            <p>Cardiologist with 20 years of experience in cardiac care and surgery.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x220?text=Dr.+Johnson" alt="Doctor">
+                        <div class="card-body">
+                            <h5>Dr. Emily Johnson</h5>
+                            <p>Pediatric specialist passionate about children's health and well-being.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x220?text=Dr.+Davis" alt="Doctor">
+                        <div class="card-body">
+                            <h5>Dr. Michael Davis</h5>
+                            <p>Orthopedic expert offering advanced bone and joint treatments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-5 text-center">
+        <div class="container">
+            <h2 class="text-white mb-4">What Our Patients Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <p>“The staff was professional and caring. Kamala Hospital truly makes patients feel valued.”</p>
+                        <cite>- Jane Doe</cite>
+                    </div>
+                    <div class="carousel-item">
+                        <p>“State-of-the-art facilities and highly skilled doctors. Highly recommended!”</p>
+                        <cite>- John Smith</cite>
+                    </div>
+                    <div class="carousel-item">
+                        <p>“From admission to discharge, the experience was smooth and comforting.”</p>
+                        <cite>- Emily Johnson</cite>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous testimonial">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next testimonial">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5>Get in Touch</h5>
+                    <p><strong>Address:</strong> 123 Health Street, Eluru, Andhra Pradesh</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@kamalahospital.com</p>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Kamala Hospital. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 150 ? 'block' : 'none';
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Thank you for contacting Kamala Hospital! We will reach out soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
